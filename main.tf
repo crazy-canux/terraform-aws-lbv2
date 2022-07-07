@@ -32,7 +32,7 @@ resource "helm_release" "lbv2" {
   }
   set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
-    value = aws_iam_role.lb_role[0].arn
+    value = aws_iam_role.lb_role.arn
   }
   set {
     name  = "image.repository"
