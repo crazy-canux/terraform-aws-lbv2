@@ -13,7 +13,7 @@ resource "helm_release" "lbv2" {
   version    = var.chart_version
   chart      = "aws-load-balancer-controller"
   namespace  = var.namespace
-  values     = length(var.helm_values) > 0 ? var.helm_values : ["${file("${path.module}/helm-values.yaml")}"]
+  values     = var.helm_values 
   dynamic "set" {
     for_each = var.extra_set_values
     content {
