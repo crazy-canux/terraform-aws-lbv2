@@ -28,7 +28,7 @@ resource "helm_release" "lbv2" {
   }
   set {
     name  = "serviceAccount.name"
-    valut = var.service_account
+    value = var.service_account
   }
   set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"
