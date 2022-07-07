@@ -17,7 +17,7 @@ data "aws_iam_policy_document" "irsa_trust_policy" {
       test     = "StringEquals"
       variable = "${local.oidc_provider}:sub"
       values = [
-        "system:serviceaccount:${var.lbv2_namespace}:${var.lbv2_service_account}"
+        "system:serviceaccount:${var.namespace}:${var.service_account}"
       ]
     }
   }

@@ -3,16 +3,16 @@
 ##############################
 resource "kubernetes_namespace" "lbv2_namespace" {
   metadata {
-    name = var.lbv2_namespace
+    name = var.namespace
   }
 }
 
 resource "helm_release" "lbv2" {
   name       = "aws-load-balancer-controller"
   repository = var.chart_repo_url
-  version    = var.lbv2_chart_version
+  version    = var.chart_version
   chart      = "aws-load-balancer-controller"
-  namespace  = var.namespace_name
+  namespace  = var.namespace
   values     = length(var.helm_values) > 0 ? var.helm_values : ["${file("${path.module}/helm-values.yaml")}"]
   dynamic "set" {
     for_each = var.extra_set_values
@@ -28,7 +28,7 @@ resource "helm_release" "lbv2" {
   }
   set {
     name  = "serviceAccount.name"
-    valut = var.lbv2_service_account
+    valut = var.service_account
   }
   set {
     name  = "serviceAccount.annotations.eks\\.amazonaws\\.com/role-arn"

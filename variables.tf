@@ -9,25 +9,25 @@ variable "oidc_issuer" {
   default     = null
 }
 
-variable "lbv2_namespace" {
+variable "namespace" {
   description = "lbv2 namespace"
   type        = string
   default     = "kube-system"
 }
 
-variable "lbv2_service_account" {
+variable "service_account" {
   description = "Service account to be created for use with the lbv2 controller"
   type        = string
   default     = "aws-load-balancer-controller"
 }
 
-variable "lbv2_chart_repo_url" {
+variable "chart_repo_url" {
   description = "URL to repository containing the lbv2 helm chart"
   type        = string
   default     = "https://aws.github.io/eks-charts"
 }
 
-variable "lbv2_chart_version" {
+variable "chart_version" {
   description = "lbv2 helm chart version"
   type        = string
   default     = "1.4.2"
