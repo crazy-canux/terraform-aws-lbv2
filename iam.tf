@@ -2,6 +2,8 @@ locals {
   oidc_provider = trimprefix(var.oidc_issuer, "https://")
 }
 
+data "aws_caller_identity" "current" {}
+
 # Trust policy to enable IRSA
 data "aws_iam_policy_document" "irsa_trust_policy" {
   statement {
@@ -36,7 +38,7 @@ data "aws_iam_policy_document" "lb_policy_document" {
     condition {
       test     = "StringEquals"
       variable = "iam:AWSServiceName"
-      values   = "elasticloadbalancing.amazonaws.com"
+      values   = ["elasticloadbalancing.amazonaws.com"]
     }
   }
   statement {
