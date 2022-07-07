@@ -1,12 +1,6 @@
 ##############################
 # resource/module
 ##############################
-resource "kubernetes_namespace" "lbv2_namespace" {
-  metadata {
-    name = var.namespace
-  }
-}
-
 resource "helm_release" "lbv2" {
   name       = "aws-load-balancer-controller"
   repository = var.chart_repo_url
@@ -42,7 +36,4 @@ resource "helm_release" "lbv2" {
     name  = "image.tag"
     value = var.image_tag
   }
-  depends_on = [
-    kubernetes_namespace.lbv2_namespace
-  ]
 }
