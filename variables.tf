@@ -52,7 +52,7 @@ variable "extra_set_values" {
 
 variable "image_repo" {
   type    = string
-  default = "602401143452.dkr.ecr.us-west-1.amazonaws.com/amazon/aws-load-balancer-controller"
+  default = "602401143452.dkr.ecr.eu-west-1.amazonaws.com/amazon/aws-load-balancer-controller"
 }
 
 variable "image_tag" {
